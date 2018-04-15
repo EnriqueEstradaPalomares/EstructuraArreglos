@@ -20,10 +20,10 @@ namespace Estructura_con_Arreglos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            limpiarTxt();
             prod.llenar(txtCodigo.Text, txtNombre.Text, txtDesc.Text, 
                 txtCantidad.Text, txtCosto.Text);
             txtLista.Text = "Producto Agregado";
+            limpiarTxt();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Estructura_con_Arreglos
 
         private void btnListar_Click(object sender, EventArgs e)
         {
-            txtLista.Text = "Lista:\r\n" + prod.listar();
+            txtLista.Text = prod.Listar();
         }
 
         public void limpiarTxt()

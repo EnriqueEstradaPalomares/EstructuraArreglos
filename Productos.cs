@@ -8,33 +8,40 @@ namespace Estructura_con_Arreglos
 {
     class Productos
     {
-        private string[] producto = new string[15];
         private int ban = 0;
+        private struct producto{
+            public string codigo;
+            public string nombre;
+            public string descripcion;
+            public string cantidad;
+            public string costo;
+        }
+        producto[] prod = new producto[15];
+
 
         public void llenar(string codigo, string nombre,
             string descripcion, string cantidad, string costo)
         {
-            producto[ban] = "Codigo: " + codigo + "| Nombre: " + nombre + "| Descripción" + descripcion 
-                + "| Cantidad: " + cantidad + "| Costo: " + costo;
+            prod[ban].codigo = codigo;
+            prod[ban].nombre = nombre;
+            prod[ban].descripcion = descripcion;
+            prod[ban].cantidad = cantidad;
+            prod[ban].costo = costo;
             ban++;
         }
 
-        public string buscar(string pos)
+        public string buscar(string codigo)
         {
+            bool b = true;
             string data = "";
-            for(int i = 0; i < 14; i++)
+            for(int i = 0; i < 15; i++)
             {
-                if (string.IsNullOrEmpty(producto[i]))
+                b = prod[0].codigo.Contains(codigo);
+                if (b)
                 {
-                    data += "No Existe";
-                }
-                else
-                {
-                    bool asa = producto[i].Contains(pos);
-                    if (asa)
-                    {
-                        data += producto[i];
-                    }
+                   data += "Codigo:" + prod[i].codigo + "| Nombre: " + prod[i].nombre
+                        + "| Descripcion: " + prod[i].descripcion +"| Cantidad: " + 
+                        prod[i].cantidad + "| Precio: $" + prod[i].costo + "\r\n";
                 }
             }
             return data;
@@ -44,25 +51,21 @@ namespace Estructura_con_Arreglos
         public void insertar(string codigo, string nombre,
             string descripcion, string cantidad, string costo, int pos)
         {
-            for(int i = 14; i > pos; i--)
+            for (int i = 14; i > pos; i--)
             {
-                producto[i] = producto[i - 1];
+                prod[i] = prod[i - 1];
             }
-            producto[pos] = "Codigo: " + codigo + "| Nombre: " + nombre + "| Descripción" + descripcion
-                + "| Cantidad: " + cantidad + "| Costo: " + costo;
+            prod[pos].codigo = codigo; prod[pos].nombre = nombre; prod[pos].descripcion = descripcion;
+            prod[pos].cantidad = cantidad; prod[pos].costo = costo;
         }
 
-        public string listar()
+        public string Listar()
         {
             string data = "";
-            for(int i = 0; i < 14; i++)
+            for(int i = 0; i < 15; i++)
             {
-                //if (string.IsNullOrEmpty(vec[i]))
-                //{
-                //    data = "NULL";
-                //}
-                //else
-                    data += i+1 + "- " + producto[i] + "\r\n";
+                data += i+1 + ".- Codigo:" + prod[i].codigo + "| Nombre: " + prod[i].nombre + "| Descripcion: " + prod[i].descripcion +
+                "| Cantidad: " + prod[i].cantidad + "| Precio: $" + prod[i].costo + "\r\n";
             }
             return data;
         }

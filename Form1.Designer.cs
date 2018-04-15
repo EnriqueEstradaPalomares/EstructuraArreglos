@@ -138,6 +138,7 @@
             this.txtLista.Location = new System.Drawing.Point(15, 195);
             this.txtLista.Multiline = true;
             this.txtLista.Name = "txtLista";
+            this.txtLista.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLista.Size = new System.Drawing.Size(435, 81);
             this.txtLista.TabIndex = 10;
             // 
