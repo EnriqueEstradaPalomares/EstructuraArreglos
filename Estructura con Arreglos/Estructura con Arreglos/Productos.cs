@@ -30,14 +30,14 @@ namespace Estructura_con_Arreglos
             ban++;
         }
 
-        public string buscar(string codigo)
+        public string buscar(int codigo)
         {
-            bool b = true;
+            int code = 0;
             string data = "";
             for(int i = 0; i < 15; i++)
             {
-                b = prod[0].codigo.Contains(codigo);
-                if (b)
+                code = Convert.ToInt16(prod[i].codigo);
+                if (code == codigo)
                 {
                    data += "Codigo:" + prod[i].codigo + "| Nombre: " + prod[i].nombre
                         + "| Descripcion: " + prod[i].descripcion +"| Cantidad: " + 
@@ -47,6 +47,32 @@ namespace Estructura_con_Arreglos
             return data;
         }
 
+        public void eliminar(int codigo)
+        {
+            int code = 0, lugar=0;
+            for(int i = 0; i < 15; i++)
+            {
+                code = Convert.ToInt32(prod[i].codigo);
+                if (code == codigo)
+                    lugar = i;
+            }
+            for(int i = lugar; i < 15; i++)
+            {
+                code = Convert.ToInt32(prod[i].codigo);
+                if (i < 14)
+                {
+                    prod[i] = prod[i + 1];
+                }
+                else
+                {
+                    prod[i].codigo = "0";
+                    prod[i].nombre = "0";
+                    prod[i].descripcion = "0";
+                    prod[i].cantidad = "0";
+                    prod[i].costo = "0";
+                }
+            }
+        }
 
         public void insertar(string codigo, string nombre,
             string descripcion, string cantidad, string costo, int pos)

@@ -28,12 +28,13 @@ namespace Estructura_con_Arreglos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            txtLista.Text = "Resultado de Busqueda \r\n" + prod.buscar(txtCodigo.Text);
+            txtLista.Text = "Resultado de Busqueda \r\n" + prod.buscar(Convert.ToInt16(txtCodigo.Text));
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            prod.eliminar(Convert.ToInt16(txtCodigo.Text));
+            txtLista.Text = "Producto Eliminado";
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
